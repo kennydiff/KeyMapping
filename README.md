@@ -3,7 +3,7 @@
 
 ## 功能列表
 - MAC
-    - [x] 本地键盘完美实现
+    - [x] *本地键盘完美实现*
     - [x] 外接蓝牙的87key键盘也完美实现
     - [x] CAPS LOCKS 实现为组合键为Ctrl ，单按为 ESC
     - [x] CAPS LOCKS 和左Ctrl 实现原本的CAPS LOCKS
