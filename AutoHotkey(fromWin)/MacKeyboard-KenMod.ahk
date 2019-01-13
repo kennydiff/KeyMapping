@@ -18,9 +18,8 @@
 ; Debug action snippet: MsgBox You pressed Control-A while Notepad is active.
 
 
-; Hack 输入法热键
-;^Space::SendInput {LAlt Down}{Shift}{LAlt Up}
-;^Space::SendInput {LAlt Down}{Shift}{LAlt Up}
+; Hack 输入法热键 为习惯的Win + Shift
+LWin & LShift::Send, #{Space}
 
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
 ^#up::Send {LWinDown}{tab}{LWinUp}
