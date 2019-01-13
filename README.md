@@ -7,6 +7,8 @@
     - [x] CAPS LOCKS 实现为组合键为Ctrl ，单按为 ESC
     - [x] "Shift & CapsLock" 实现原本的CapsLock
     - [ ] 输入法同步为Mac & Windows 统一热键
+    - [ ] 输v入法热键需要好好规划一下，是否要做成，，，默认英文，某个指向中文，某个指向英文，两种热键方案？
+
 
 - MAC
     - [x] 本地键盘完美实现
