@@ -3,17 +3,18 @@
 
 ## 功能列表
 - 总体
-    - [ ] Chrome、输入法、复制黏贴等常用双系统的操作热键保持一致。主要为Windows兼容Mac的操作习惯（使用过的都知道Mac的热键更人性化一些）
+    - [x] Chrome、输入法、复制黏贴等常用双系统的操作热键保持一致。主要为Windows兼容Mac的操作习惯（使用过的都知道Mac的热键更人性化一些）
     - [x] CAPS LOCKS 实现为组合键为Ctrl ，单按为 ESC
-    - [x] CAPS LOCKS 和左Ctrl 实现原本的CAPS LOCKS    
+    - [x] "Shift & CapsLock" 实现原本的CapsLock
+    - [ ] 输入法同步为Mac & Windows 统一热键
 
 - MAC
     - [x] 本地键盘完美实现
     - [x] 外接蓝牙的达尔优(Dareu)87key键盘也完美实现
 
 - Windows
-    - [ ] 注册表，三键互换
-    - [ ] AHK的实现剩余功能
+    - [x] 注册表 Alt Win互换
+    - [x] AHK的实现剩余功能
     
 - Others
     - [ ] github repo里面好多mac系统的垃圾文件
