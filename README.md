@@ -13,7 +13,7 @@
     - [x] 外接蓝牙的达尔优(Dareu)87key键盘也完美实现
 
 - Windows
-    - [x] 注册表 Alt Win互换
+    - [x] 注册表实现"Alt = Win"的互换
     - [x] AHK的实现剩余功能
     
 - Others
