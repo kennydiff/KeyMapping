@@ -6,8 +6,9 @@
     - [x] Chrome、输入法、复制黏贴等常用双系统的操作热键保持一致。主要为Windows兼容Mac的操作习惯（使用过的都知道Mac的热键更人性化一些）
     - [x] CAPS LOCKS 实现为组合键为Ctrl ，单按为 ESC
     - [x] "Shift & CapsLock" 实现原本的CapsLock
-    - [ ] 输入法同步为Mac & Windows 统一热键
-    - [ ] 输v入法热键需要好好规划一下，是否要做成，，，默认英文，某个指向中文，某个指向英文，两种热键方案？
+    - [ ] 输入法同步为Mac & Windows 统一热键，输入法热键需要好好规划一下，是否要做成，，，默认英文，某个指向中文，某个指向英文，两种热键方案？
+          如：Shift 单按为切换英文输入法，cmd/win + Shift 切换为中文输入法？。。。 整个是否太叼？
+    - [ ] CapsLock的定义为Ctrl是否简单了点？改为？Hyper键是否意义更大？（Win和Mac 都可以模拟Hyper的）
 
 
 - MAC
