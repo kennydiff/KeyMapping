@@ -15,14 +15,14 @@
                 },
                 "rules": [
                     {
-                        "description": "control + caps_lock as caps_lock",
+                        "description": "shift + caps_lock as caps_lock(must be the first rule!)",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "shift"
                                         ],
                                         "optional": [
                                             "caps_lock"
