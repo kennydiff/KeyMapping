@@ -97,13 +97,13 @@ SendMode Input
 ; new windows by @KennyDiff
 <#n::Send {LCtrl Down}{n}{LCtrl Up}
 
+; reload by @KennyDiff
+<#r::Send {LCtrl Down}{r}{LCtrl Up}
+; 恢复之前的Win + R的运行 ->  Ctrl + Win +R 操作
+<^#r::Send {LWin Down}{r}{LWin Up}
+
 ; Close windows (cmd + q to Alt + F4)
 <#q::Send !{F4}
-
-;>^up::Send {LWinDown}{tab}{LWinUp}}        
-
-; minimize windows
-;<!m::WinMinimize
 
 ; Emacs-like text navigation
 ;<^a::Send {Home}
