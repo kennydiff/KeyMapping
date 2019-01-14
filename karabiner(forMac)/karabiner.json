@@ -15,7 +15,7 @@
                 },
                 "rules": [
                     {
-                        "description": "shift + caps_lock as caps_lock(must be the first rule!)",
+                        "description": "shift + caps_lock as caps_lock(must before the Hyper CapsLock rule!)",
                         "manipulators": [
                             {
                                 "from": {
@@ -39,7 +39,7 @@
                         ]
                     },
                     {
-                        "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
+                        "description": "Change caps_lock key to command+control+option+shift. (Post escape key when pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -52,7 +52,12 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control"
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
                                     }
                                 ],
                                 "to_if_alone": [
@@ -63,23 +68,91 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Use left_shift + Left_command to switch between Languages,Use option+1/2 to switch language to English, Chinese.",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": [                                            
+                                            "left_command"
+                                        ],
+                                        "optional": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to":[
+                                    {
+                                      "key_code": "left_shift",
+                                      "modifiers": [
+                                            "left_command",
+                                            "left_shift"
+                                        ]                                      
+                                    }
+                                ],                                 
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "f14",
+                                        "modifiers": [
+                                            "shift",
+                                            "command",
+                                            "control",
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "1",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "select_input_source": {
+                                            "language": "en"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "select_input_source": {
+                                            "language": "zh-Hans"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
             "devices": [
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 50495,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
                 {
                     "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
@@ -116,11 +189,11 @@
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
-                        "product_id": 627,
-                        "vendor_id": 1452
+                        "product_id": 50495,
+                        "vendor_id": 1133
                     },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": []
                 }
             ],
@@ -222,7 +295,7 @@
                     }
                 }
             ],
-            "name": "Default profile",
+            "name": "Kenny's profile",
             "selected": true,
             "simple_modifications": [],
             "virtual_hid_keyboard": {
