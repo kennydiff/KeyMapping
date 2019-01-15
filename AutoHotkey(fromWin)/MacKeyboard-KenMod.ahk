@@ -18,6 +18,13 @@
 ; Debug action snippet: MsgBox You pressed Control-A while Notepad is active.
 
 
+; --------------------------------------------------------------
+; new Shift & CapsLock by @KennyDiff 注意位置，必须在以上HyperKey实现的后面
+; 否则会CapsLock灯混乱
+; --------------------------------------------------------------
+
+; +CapsLock::CapsLock
+
 ;--------------------------------------------------------------
 ; 以下是Hack CAPS LOCK to Hyper(Ctrl + Shift + Alt)的代码, Win键无法加入进去，很多windows的
 ; 快捷键不支持使用Win作为修饰符，，，很傻逼的微软。
@@ -27,11 +34,10 @@
 #UseHook
 #InstallKeybdHook
 #SingleInstance force
-
 SendMode Input
 
 ;; deactivate capslock completely
-SetCapslockState, AlwaysOff
+ SetCapslockState, AlwaysOff
 
 ;; remap capslock to hyper
 ;; if capslock is toggled, remap it to esc
@@ -45,73 +51,46 @@ SetCapslockState, AlwaysOff
     ;; released whenever a keystroke calls for it.
     ;; for example, Send {Ctrl Downtemp} followed later by Send {Left} would produce a normal {Left}
     ;; keystroke, not a Ctrl{Left} keystroke
-    ; {LWin DownTemp}
-    Send {Ctrl DownTemp}{Shift DownTemp}{Alt DownTemp}
+    ; {LWin DownTemp}  傻叉Widnows 不支持Win作为修饰符来定义日常热键，所以Hyper 键的定义少了一个Win的键。
+    Send {LCtrl DownTemp}{LShift DownTemp}{LAlt DownTemp}
     KeyWait, Capslock
     ; {LWin Up}
-    Send {Ctrl Up}{Shift Up}{Alt Up}
+    Send {LCtrl Up}{LShift Up}{LAlt Up}
     if (A_PriorKey = "Capslock") {
         Send {Esc}
     }
 return
 
-;; vim navigation with hyper
-~Capslock & h:: Send {Left}
-~Capslock & l:: Send {Right}
-~Capslock & k:: Send {Up}
-~Capslock & j:: Send {Down}
+
+
+;; vim navigation with hyper 不用vim，所以这个热键暂时屏蔽
+; ~Capslock & h:: Send {Left}
+; ~Capslock & l:: Send {Right}
+; ~Capslock & k:: Send {Up}
+; ~Capslock & j:: Send {Down}
 
 ;; popular hotkeys with hyper
 ; ~Capslock & c:: Send ^{c}
 ; ~Capslock & v:: Send ^{v}
 
-
 ; --------------------------------------------------------------
-; new Shift & CapsLock by @KennyDiff
+; 恢复之前的Win + R的运行 ->  CapsLock +R 操作
 ; --------------------------------------------------------------
-+CapsLock::CapsLock
-; --------------------------------------------------------------
+~Capslock & r:: Send {LWin Down}{r}{LWin Up}
 
 
 
-; Hack 输入法热键 为习惯的Win + Shift
-LWin & LShift::Send, #{Space}
-
-; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
-^#up::Send {LWinDown}{tab}{LWinUp}
-^#down::Send {LWinDown}{tab}{LWinUp}
-; 实现win & tab 为以前的alt+tab效果
-<#>tab::AltTab
-;#tab::AltTab
-
-
-
-; --------------------------------------------------------------
-; media/function keys all mapped to the right option key
-; --------------------------------------------------------------
-
-;RAlt & F7::SendInput {Media_Prev}
-;RAlt & F8::SendInput {Media_Play_Pause}
-;RAlt & F9::SendInput {Media_Next}
-;F10::SendInput {Volume_Mute}
-;F11::SendInput {Volume_Down}
-;F12::SendInput {Volume_Up}
-
-; swap left command/windows key with left alt
-;LWin::LAlt
-;LAlt::LWin ; add a semicolon in front of this line if you want to disable the windows key
-
-; Eject Key
-;F20::SendInput {Insert}
-
-; F13-15, standard windows mapping
-;F13::SendInput {PrintScreen}
-;F14::SendInput {ScrollLock}
-;F15::SendInput {Pause}
+; #InstallKeybdHook
+; #SingleInstance force
+; SetTitleMatchMode 2
+; SendMode Input
 
 ; --------------------------------------------------------------
 ; OS X system shortcuts
 ; --------------------------------------------------------------
+
+; 将win+鼠标点击（Chrome里的常见操作，改为Ctrl + 左键）  
+LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
 
 ; Make Ctrl + S work with cmd (windows) key
 <#s::Send {LCtrl Down}{s}{LCtrl Up}
@@ -149,40 +128,25 @@ LWin & LShift::Send, #{Space}
 ; new windows by @KennyDiff
 <#n::Send {LCtrl Down}{n}{LCtrl Up}
 
-; reload by @KennyDiff
+; Reload by @KennyDiff
 <#r::Send {LCtrl Down}{r}{LCtrl Up}
-; 恢复之前的Win + R的运行 ->  Ctrl + Win +R 操作
-<^#r::Send {LWin Down}{r}{LWin Up}
 
 ; Close windows (cmd + q to Alt + F4)
 <#q::Send !{F4}
 
-; Emacs-like text navigation
-;<^a::Send {Home}
-;<^e::Send {End}
-;<^n::Send {Down}
-;<^p::Send {Up}
-;<^f::Send {Right}
-;<^b::Send {Left}
-;<^d::Send {Del}
-;<^u::Send +{Home}{Del}
-;<^k::Send +{End}{Del}
+
+ ;{RCtrl}{RShift}{RAlt}{r}::Send {LWin Down}{r}{LWin Up}
+; ~Capslock & r:: Send {LWin Down}{r}{LWin Up}
 
 ; --------------------------------------------------------------
-; Custom mappings for special chars
+; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
 ; --------------------------------------------------------------
+^#up::Send {LWin DownTemp}{tab}{LWinUp}
+^#down::Send {LWin DownTemp}{tab}{LWinUp}
+; 实现win & tab 为以前的alt+tab效果
+<#tab::AltTab
 
 ; --------------------------------------------------------------
-; Application specific
+; Hack输入法热键 为习惯的Win + Shift
 ; --------------------------------------------------------------
-
-;--------------------------------------------------------------
-; 防止人格分裂，，，用这样的代码来同步mac windows 键盘 这个改后会出很多问题，直接map alt的热键好了
-;--------------------------------------------------------------
-; LAlt::LWin
-; LWin::LAlt
-
-; 将win+鼠标点击（Chrome里的常见操作，改为Ctrl + 左键）
-LWin & LButton::
-    Send {RCtrl Down}{Click}{RCtrl Up}
-return
+ LWin & LShift::#Space
