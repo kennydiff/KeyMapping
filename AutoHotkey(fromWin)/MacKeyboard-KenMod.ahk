@@ -25,10 +25,10 @@
 #UseHook
 #InstallKeybdHook
 #SingleInstance force
-;SendMode Input  ;这句代码会导致 Ctrl + Win + up/down 无法在应用里响应热键,麻痹，调试了我好久。
+SendMode Input ;这句代码会导致 Ctrl + Win + up/down 无法在应用里响应热键,麻痹，调试了我好久。 这玩意还会导致 长按Capslock导致大写状态改变
 
 ;; deactivate capslock completely
- SetCapslockState, AlwaysOff
+SetCapslockState, AlwaysOff
 
 ;; remap capslock to hyper
 ;; if capslock is toggled, remap it to esc
@@ -132,9 +132,9 @@ LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
 ; --------------------------------------------------------------
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
 ; --------------------------------------------------------------
-;  Send {LWin Down}{r}{LWin Up}
-^#Up::Send {LWin Down}{tab}{LWin Up}
-^#down::Send {LWin Down}{tab}{LWin Up}
+;这里要硬写为SendEvent 其他模式send 是之前定义的Input模式，会导致在编辑器内无法全局的激活windows的操作
+^#up::SendEvent, {LWin Down}{tab}{LWin Up} 
+^#down::SendEvent, {LWin Down}{tab}{LWin Up}
 
 ; 实现win & tab 为以前的alt+tab效果
 <#tab::AltTab
