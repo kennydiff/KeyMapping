@@ -17,24 +17,15 @@
 ;
 ; Debug action snippet: MsgBox You pressed Control-A while Notepad is active.
 
-
-; --------------------------------------------------------------
-; new Shift & CapsLock by @KennyDiff 注意位置，必须在以上HyperKey实现的后面
-; 否则会CapsLock灯混乱
-; --------------------------------------------------------------
-
-; +CapsLock::CapsLock
-
 ;--------------------------------------------------------------
 ; 以下是Hack CAPS LOCK to Hyper(Ctrl + Shift + Alt)的代码, Win键无法加入进去，很多windows的
 ; 快捷键不支持使用Win作为修饰符，，，很傻逼的微软。
 ;--------------------------------------------------------------
-
 #NoEnv ; recommended for performance and compatibility with future autohotkey releases.
 #UseHook
 #InstallKeybdHook
 #SingleInstance force
-SendMode Input
+;SendMode Input  ;这句代码会导致 Ctrl + Win + up/down 无法在应用里响应热键,麻痹，调试了我好久。
 
 ;; deactivate capslock completely
  SetCapslockState, AlwaysOff
@@ -51,7 +42,7 @@ SendMode Input
     ;; released whenever a keystroke calls for it.
     ;; for example, Send {Ctrl Downtemp} followed later by Send {Left} would produce a normal {Left}
     ;; keystroke, not a Ctrl{Left} keystroke
-    ; {LWin DownTemp}  傻叉Widnows 不支持Win作为修饰符来定义日常热键，所以Hyper 键的定义少了一个Win的键。
+    ; {LWin DownTemp}  ;Stupid Widnows 不支持Win作为修饰符来定义日常热键
     Send {LCtrl DownTemp}{LShift DownTemp}{LAlt DownTemp}
     KeyWait, Capslock
     ; {LWin Up}
@@ -61,9 +52,14 @@ SendMode Input
     }
 return
 
+; --------------------------------------------------------------
+; new Shift & CapsLock by @KennyDiff 注意位置，必须在以上HyperKey实现的后面
+; 否则会导致CapsLock灯混乱
+; --------------------------------------------------------------
++CapsLock::CapsLock
+; --------------------------------------------------------------
 
-
-;; vim navigation with hyper 不用vim，所以这个热键暂时屏蔽
+;; vim navigation with hyper 不用vim，所以这些热键暂时屏蔽
 ; ~Capslock & h:: Send {Left}
 ; ~Capslock & l:: Send {Right}
 ; ~Capslock & k:: Send {Up}
@@ -74,11 +70,9 @@ return
 ; ~Capslock & v:: Send ^{v}
 
 ; --------------------------------------------------------------
-; 恢复之前的Win + R的运行 ->  CapsLock +R 操作
+; 重新定义了Win+R 为刷新，重载，所以用Hyper+R 替代之前的Win+R(运行)的热键
 ; --------------------------------------------------------------
 ~Capslock & r:: Send {LWin Down}{r}{LWin Up}
-
-
 
 ; #InstallKeybdHook
 ; #SingleInstance force
@@ -128,21 +122,20 @@ LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
 ; new windows by @KennyDiff
 <#n::Send {LCtrl Down}{n}{LCtrl Up}
 
-; Reload by @KennyDiff
+; 刷新/重载/Reload重定义 ，屏蔽了原始的Win+R(运行) by @KennyDiff
 <#r::Send {LCtrl Down}{r}{LCtrl Up}
 
 ; Close windows (cmd + q to Alt + F4)
 <#q::Send !{F4}
 
 
- ;{RCtrl}{RShift}{RAlt}{r}::Send {LWin Down}{r}{LWin Up}
-; ~Capslock & r:: Send {LWin Down}{r}{LWin Up}
-
 ; --------------------------------------------------------------
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
 ; --------------------------------------------------------------
-^#up::Send {LWin DownTemp}{tab}{LWinUp}
-^#down::Send {LWin DownTemp}{tab}{LWinUp}
+;  Send {LWin Down}{r}{LWin Up}
+^#Up::Send {LWin Down}{tab}{LWin Up}
+^#down::Send {LWin Down}{tab}{LWin Up}
+
 ; 实现win & tab 为以前的alt+tab效果
 <#tab::AltTab
 

@@ -16,8 +16,7 @@
 
 - Windows
     - [x] 注册表实现"Alt = Win"的互换
-    - [x] AHK的实现剩余功能
-    - [ ] win + R  reload 操作和 windows的打开运行之间的冲突。(Mac里没有打开运行项)
+    - [x] AHK的实现剩余功能    
     
 - Others
     - [ ] github repo里有些mac系统的垃圾文件
