@@ -18,6 +18,62 @@
 ; Debug action snippet: MsgBox You pressed Control-A while Notepad is active.
 
 
+;--------------------------------------------------------------
+; 以下是Hack CAPS LOCK to Hyper(Ctrl + Shift + Alt)的代码, Win键无法加入进去，很多windows的
+; 快捷键不支持使用Win作为修饰符，，，很傻逼的微软。
+;--------------------------------------------------------------
+
+#NoEnv ; recommended for performance and compatibility with future autohotkey releases.
+#UseHook
+#InstallKeybdHook
+#SingleInstance force
+
+SendMode Input
+
+;; deactivate capslock completely
+SetCapslockState, AlwaysOff
+
+;; remap capslock to hyper
+;; if capslock is toggled, remap it to esc
+
+;; note: must use tidle prefix to fire hotkey once it is pressed
+;; not until the hotkey is released
+~Capslock::
+    ;; must use downtemp to emulate hyper key, you cannot use down in this case 
+    ;; according to http://bit.ly/2fLyHHI, downtemp is as same as down except for ctrl/alt/shift/win keys
+    ;; in those cases, downtemp tells subsequent sends that the key is not permanently down, and may be 
+    ;; released whenever a keystroke calls for it.
+    ;; for example, Send {Ctrl Downtemp} followed later by Send {Left} would produce a normal {Left}
+    ;; keystroke, not a Ctrl{Left} keystroke
+    ; {LWin DownTemp}
+    Send {Ctrl DownTemp}{Shift DownTemp}{Alt DownTemp}
+    KeyWait, Capslock
+    ; {LWin Up}
+    Send {Ctrl Up}{Shift Up}{Alt Up}
+    if (A_PriorKey = "Capslock") {
+        Send {Esc}
+    }
+return
+
+;; vim navigation with hyper
+~Capslock & h:: Send {Left}
+~Capslock & l:: Send {Right}
+~Capslock & k:: Send {Up}
+~Capslock & j:: Send {Down}
+
+;; popular hotkeys with hyper
+; ~Capslock & c:: Send ^{c}
+; ~Capslock & v:: Send ^{v}
+
+
+; --------------------------------------------------------------
+; new Shift & CapsLock by @KennyDiff
+; --------------------------------------------------------------
++CapsLock::CapsLock
+; --------------------------------------------------------------
+
+
+
 ; Hack 输入法热键 为习惯的Win + Shift
 LWin & LShift::Send, #{Space}
 
@@ -28,11 +84,7 @@ LWin & LShift::Send, #{Space}
 <#>tab::AltTab
 ;#tab::AltTab
 
-;之前的代码里有，不懂到底有啥用，有用的，否则CapsLock会出乱子
-#InstallKeybdHook
-#SingleInstance force
-SetTitleMatchMode 2
-SendMode Input
+
 
 ; --------------------------------------------------------------
 ; media/function keys all mapped to the right option key
@@ -97,13 +149,13 @@ SendMode Input
 ; new windows by @KennyDiff
 <#n::Send {LCtrl Down}{n}{LCtrl Up}
 
+; reload by @KennyDiff
+<#r::Send {LCtrl Down}{r}{LCtrl Up}
+; 恢复之前的Win + R的运行 ->  Ctrl + Win +R 操作
+<^#r::Send {LWin Down}{r}{LWin Up}
+
 ; Close windows (cmd + q to Alt + F4)
 <#q::Send !{F4}
-
-;>^up::Send {LWinDown}{tab}{LWinUp}}        
-
-; minimize windows
-;<!m::WinMinimize
 
 ; Emacs-like text navigation
 ;<^a::Send {Home}
@@ -125,112 +177,6 @@ SendMode Input
 ; --------------------------------------------------------------
 
 ;--------------------------------------------------------------
-; 以下是Hack CAPS LOCK的代码
-;--------------------------------------------------------------
-g_LastCtrlKeyDownTime := 0
-g_AbortSendEsc := false
-g_ControlRepeatDetected := false
-
-*CapsLock::
-    if (g_ControlRepeatDetected)
-    {
-        return
-    }
-
-    send,{Ctrl down}
-    g_LastCtrlKeyDownTime := A_TickCount
-    g_AbortSendEsc := false
-    g_ControlRepeatDetected := true
-    return
-
-*CapsLock Up::
-    send,{Ctrl up}
-    g_ControlRepeatDetected := false
-    if (g_AbortSendEsc)
-    {
-        return
-    }
-    current_time := A_TickCount
-    time_elapsed := current_time - g_LastCtrlKeyDownTime
-    if (time_elapsed <= 250)
-    {
-        SendInput {Esc}
-    }
-    return
-
-~*^a::
-~*^b::
-~*^c::
-~*^d::
-~*^e::
-~*^f::
-~*^g::
-~*^h::
-~*^i::
-~*^j::
-~*^k::
-~*^l::
-~*^m::
-~*^n::
-~*^o::
-~*^p::
-~*^q::
-~*^r::
-~*^s::
-~*^t::
-~*^u::
-~*^v::
-~*^w::
-~*^x::
-~*^y::
-~*^z::
-~*^1::
-~*^2::
-~*^3::
-~*^4::
-~*^5::
-~*^6::
-~*^7::
-~*^8::
-~*^9::
-~*^0::
-~*^Space::
-~*^Backspace::
-~*^Delete::
-~*^Insert::
-~*^Home::
-~*^End::
-~*^PgUp::
-~*^PgDn::
-~*^Tab::
-~*^Return::
-~*^,::
-~*^.::
-~*^/::
-~*^;::
-~*^'::
-~*^[::
-~*^]::
-~*^\::
-~*^-::
-~*^=::
-~*^`::
-~*^F1::
-~*^F2::
-~*^F3::
-~*^F4::
-~*^F5::
-~*^F6::
-~*^F7::
-~*^F8::
-~*^F9::
-~*^F10::
-~*^F11::
-~*^F12::
-    g_AbortSendEsc := true
-    return
-
-;--------------------------------------------------------------
 ; 防止人格分裂，，，用这样的代码来同步mac windows 键盘 这个改后会出很多问题，直接map alt的热键好了
 ;--------------------------------------------------------------
 ; LAlt::LWin
@@ -240,6 +186,3 @@ g_ControlRepeatDetected := false
 LWin & LButton::
     Send {RCtrl Down}{Click}{RCtrl Up}
 return
-
-; new Shift & CapsLock by @KennyDiff
-+CapsLock::CapsLock
