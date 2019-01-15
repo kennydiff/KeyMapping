@@ -62,8 +62,8 @@ return
 ~Capslock & j:: Send {Down}
 
 ;; popular hotkeys with hyper
-~Capslock & c:: Send ^{c}
-~Capslock & v:: Send ^{v}
+; ~Capslock & c:: Send ^{c}
+; ~Capslock & v:: Send ^{v}
 
 
 ; --------------------------------------------------------------
