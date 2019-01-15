@@ -132,7 +132,7 @@ LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
 ; --------------------------------------------------------------
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
 ; --------------------------------------------------------------
-;这里要硬写为SendEvent 其他模式send 是之前定义的Input模式，会导致在编辑器内无法全局的激活windows的操作
+;这里要硬写为SendEvent 其他模式send 是之前定义的Input模式，会导致在编辑器/浏览器内无法全局的激活windows的虚拟桌面,参见 https://autohotkey.com/docs/commands/SendMode.htm
 ^#up::SendEvent, {LWin Down}{tab}{LWin Up} 
 ^#down::SendEvent, {LWin Down}{tab}{LWin Up}
 
