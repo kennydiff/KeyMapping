@@ -28,11 +28,7 @@ LWin & LShift::Send, #{Space}
 <#>tab::AltTab
 ;#tab::AltTab
 
-;之前的代码里有，不懂到底有啥用，有用的，否则CapsLock会出乱子
-#InstallKeybdHook
-#SingleInstance force
-SetTitleMatchMode 2
-SendMode Input
+
 
 ; --------------------------------------------------------------
 ; media/function keys all mapped to the right option key
@@ -127,6 +123,14 @@ SendMode Input
 ;--------------------------------------------------------------
 ; 以下是Hack CAPS LOCK的代码
 ;--------------------------------------------------------------
+
+
+;之前的代码里有，不懂到底有啥用，有用的，否则CapsLock会出乱子
+#InstallKeybdHook
+#SingleInstance force
+SetTitleMatchMode 2
+SendMode Input
+
 g_LastCtrlKeyDownTime := 0
 g_AbortSendEsc := false
 g_ControlRepeatDetected := false
