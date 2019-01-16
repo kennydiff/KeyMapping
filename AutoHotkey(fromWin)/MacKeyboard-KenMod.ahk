@@ -70,7 +70,7 @@ return
 ; ~Capslock & v:: Send ^{v}
 
 ; --------------------------------------------------------------
-; 重新定义了Win+R 为刷新，重载，所以用Hyper+R 替代之前的Win+R(运行)的热键
+; 重新定义了Win+R 为刷新，重载，所以用Hyper+R 替代之前的Win+R(运行)的热键,Win+Q(win搜索)
 ; --------------------------------------------------------------
 ~Capslock & r:: Send {LWin Down}{r}{LWin Up}
 ~Capslock & q:: Send {LWin Down}{q}{LWin Up}
@@ -84,15 +84,16 @@ return
 ; OS X system shortcuts
 ; --------------------------------------------------------------
 
-; 将win+鼠标点击（Chrome里的常见操作，改为Ctrl + 左键）  
+; 将win+鼠标点击（Chrome里的常见操作，改为Ctrl + 左键） 
 LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
 
 ; Make Ctrl + S work with cmd (windows) key
 <#s::
     ; 如果当前窗体是Evernote ，将Win+S 改发F9做保存，保持和mac的热键同步,因为傻逼Evernote基本上没有修改热键的功能。
-    IfWinActive, ahk_class ENMainFrame
-        ;WinActivate
-        Send {f9}    
+    IfWinActive, ahk_class ENSingleNoteView
+        Send {f9}        
+    else IfWinActive, ahk_class ENMainFrame
+        Send {f9}
     else
         Send {LCtrl Down}{s}{LCtrl Up}
 return
