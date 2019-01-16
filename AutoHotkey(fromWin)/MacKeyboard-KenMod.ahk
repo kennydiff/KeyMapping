@@ -25,10 +25,12 @@
 #UseHook
 #InstallKeybdHook
 #SingleInstance force
-SendMode Input ;这句代码会导致 Ctrl + Win + up/down 无法在应用里响应热键,麻痹，调试了我好久。 这玩意还会导致 长按Capslock导致大写状态改变
+SendMode Input ;这句代码会导致 Ctrl + Win + up/down 无法在应用里响应热键,麻痹，调试了好久。 这玩意还会导致 长按Capslock导致大写状态改变
 
 ;; deactivate capslock completely
-SetCapslockState, AlwaysOff
+SetCapslockState, AlwaysOff 
+
+
 
 ;; remap capslock to hyper
 ;; if capslock is toggled, remap it to esc
@@ -56,7 +58,8 @@ return
 ; new Shift & CapsLock by @KennyDiff 注意位置，必须在以上HyperKey实现的后面
 ; 否则会导致CapsLock灯混乱
 ; --------------------------------------------------------------
-+CapsLock::CapsLock
+; +CapsLock::CapsLock
+~Capslock & `:: Capslock
 ; --------------------------------------------------------------
 
 ;; vim navigation with hyper 不用vim，所以这些热键暂时屏蔽
@@ -65,92 +68,40 @@ return
 ; ~Capslock & k:: Send {Up}
 ; ~Capslock & j:: Send {Down}
 
-;; popular hotkeys with hyper
-; ~Capslock & c:: Send ^{c}
-; ~Capslock & v:: Send ^{v}
-
-; --------------------------------------------------------------
-; 重新定义了Win+R 为刷新，重载，所以用Hyper+R 替代之前的Win+R(运行)的热键,Win+Q(win搜索),Win+X(win特别菜单)
-; --------------------------------------------------------------
-~Capslock & r:: Send {LWin Down}{r}{LWin Up}
-~Capslock & q:: Send {LWin Down}{q}{LWin Up}
-~Capslock & x:: Send {LWin Down}{x}{LWin Up}
-
-; #InstallKeybdHook
-; #SingleInstance force
-; SetTitleMatchMode 2
-; SendMode Input
-
 ; --------------------------------------------------------------
 ; OS X system shortcuts
 ; --------------------------------------------------------------
 
 ; 将win+鼠标点击（Chrome里的常见操作，改为Ctrl + 左键） 
-LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
+; LWin & LButton::Send {RCtrl Down}{Click}{RCtrl Up}
 
 ; Make Ctrl + S work with cmd (windows) key
-<#s::
+<^s::
     ; 如果当前窗体是Evernote ，将Win+S 改发F9做保存，保持和mac的热键同步,因为傻逼Evernote基本上没有修改热键的功能。
     IfWinActive, ahk_class ENSingleNoteView
         Send {f9}        
     else IfWinActive, ahk_class ENMainFrame
         Send {f9}
     else
-        Send {LCtrl Down}{s}{LCtrl Up}
+        Send {LCtrl Down}{s}{LCtrl Up}  ; #todo# 这里代码有点脏，，，需要整理一下。。。
 return
 
-; Selecting
-<#a::Send {LCtrl Down}{a}{LCtrl Up}
-
-; Copying
-<#c::Send {LCtrl Down}{c}{LCtrl Up}
-
-; Pasting
-<#v::Send {LCtrl Down}{v}{LCtrl Up}
-
-; Cutting
-<#x::Send {LCtrl Down}{x}{LCtrl Up}
-
-; Opening
-<#o::Send {LCtrl Down}{o}{LCtrl Up}
-
-; Finding
-<#f::Send {LCtrl Down}{f}{LCtrl Up}
-
-; Undo
-<#z::Send {LCtrl Down}{z}{LCtrl Up}
-
-; Redo
-<#y::Send {LCtrl Down}{y}{LCtrl Up}
-
-; New tab
-<#t::Send {LCtrl Down}{t}{LCtrl Up}
-
-; close tab
-<#w::Send {LCtrl Down}{w}{LCtrl Up}
-
-; new windows by @KennyDiff
-<#n::Send {LCtrl Down}{n}{LCtrl Up}
-
-; 刷新/重载/Reload重定义 ，屏蔽了原始的Win+R(运行) by @KennyDiff
-<#r::Send {LCtrl Down}{r}{LCtrl Up}
-
 ; Close windows (cmd + q to Alt + F4)
-<#q::Send !{F4}
-;<#q::Send Close
-
+<^q::Send !{F4}
 
 ; --------------------------------------------------------------
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
 ; --------------------------------------------------------------
 ;这里要硬写为SendEvent 其他模式send 是之前定义的Input模式，会导致在编辑器/浏览器内无法全局的激活windows的虚拟桌面,参见 https://autohotkey.com/docs/commands/SendMode.htm
-^#up::SendEvent, {LWin Down}{tab}{LWin Up} 
-^#down::SendEvent, {LWin Down}{tab}{LWin Up}
+; ^#up::SendEvent, {LWin Down}{tab}{LWin Up} 
+; ^#down::SendEvent, {LWin Down}{tab}{LWin Up}
 
-; 实现win & tab 为以前的alt+tab效果
-<#tab::AltTab
+; 实现win & tab 为以前的alt+tab效果   #todo# 反向的Shift的实现没有
+<^tab::AltTab
+<!tab::Send {LCtrl Down}{tab}{LCtrl Up}
 
 ; --------------------------------------------------------------
-; Hack输入法热键 为习惯的Win + Shift
+; Hack输入法热键 为习惯的Win + Shift , ~ 表示精确匹配，如果同时按了其他键则不进入交换逻辑 
+; #todo# 如果ctrl + shift +t in chrome ,,仍然会导致输入法逻辑混乱，并且按着不放，会频繁切换输入法
 ; --------------------------------------------------------------
- LWin & LShift::#Space
+~^LShift::#Space
