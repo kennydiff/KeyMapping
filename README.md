@@ -17,6 +17,7 @@
 - Windows
     - [x] 注册表实现"Alt = Win"的互换
     - [x] AHK的实现剩余功能    
+    - [x] 添加Evernote支持(Win+S -> F9)
     
 - Others
     - [ ] github repo里有些mac系统的垃圾文件
