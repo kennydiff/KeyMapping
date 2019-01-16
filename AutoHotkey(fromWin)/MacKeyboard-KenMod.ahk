@@ -96,9 +96,9 @@ return
 ; ^#up::SendEvent, {LWin Down}{tab}{LWin Up} 
 ; ^#down::SendEvent, {LWin Down}{tab}{LWin Up}
 
-; 实现win & tab 为以前的alt+tab效果   #todo# 反向的Shift的实现没有
-<^tab::AltTab
-<!tab::Send {LCtrl Down}{tab}{LCtrl Up}
+; 实现win & tab 为以前的alt+tab效果   
+<^tab::AltTab  ; 这个反向的shift已经自带了? 貌似方向还是正的
+<!tab::Send {LCtrl Down}{tab}{LCtrl Up}  ; #todo# 反向的Shift的实现没有
 
 ; --------------------------------------------------------------
 ; Hack输入法热键 为习惯的Win + Shift , ~ 表示精确匹配，如果同时按了其他键则不进入交换逻辑 
