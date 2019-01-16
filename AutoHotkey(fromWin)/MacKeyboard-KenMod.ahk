@@ -70,10 +70,11 @@ return
 ; ~Capslock & v:: Send ^{v}
 
 ; --------------------------------------------------------------
-; 重新定义了Win+R 为刷新，重载，所以用Hyper+R 替代之前的Win+R(运行)的热键,Win+Q(win搜索)
+; 重新定义了Win+R 为刷新，重载，所以用Hyper+R 替代之前的Win+R(运行)的热键,Win+Q(win搜索),Win+X(win特别菜单)
 ; --------------------------------------------------------------
 ~Capslock & r:: Send {LWin Down}{r}{LWin Up}
 ~Capslock & q:: Send {LWin Down}{q}{LWin Up}
+~Capslock & x:: Send {LWin Down}{x}{LWin Up}
 
 ; #InstallKeybdHook
 ; #SingleInstance force
@@ -136,6 +137,7 @@ return
 
 ; Close windows (cmd + q to Alt + F4)
 <#q::Send !{F4}
+;<#q::Send Close
 
 
 ; --------------------------------------------------------------
