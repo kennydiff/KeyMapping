@@ -35,9 +35,8 @@
     反键属性，在兼容性页面里将这个程序设置用“管理员权限”执行即可解决问题。
     UAC rules have changed with Windows 10.
     AutoHotkey scripts that worked fine in Windows 7 no longer work in Windows 10.
-    1) Find your AutoHotkey executable, typically here: C:\Program Files\AutoHotkey\AutoHotkey.exe
-    2) Right-click on AutoHotkey.exe
-    3) Select the Compatibility tab
-    4) Enable Run this program as Administrator
-    Note you have to do this even though you are running as an Administrator.
-    This caused me to go back to Windows 7 until I could figure it out. Gamer, I need my scripts! Very frustrating. Hope this helps others.
+    1. Find your AutoHotkey executable, typically here: C:\Program Files\AutoHotkey\AutoHotkey.exe
+    2. Right-click on AutoHotkey.exe
+    3. Select the Compatibility tab
+    4. Enable Run this program as Administrator
+    Note you have to do this even though you are running as an Administrator.  Hope this helps others.
