@@ -31,11 +31,11 @@
 - AHK(forWin) 全称 AutoHotKey ，有用，但无法完整的Hack，还需要用到注册表进行系统级改，不过也算可以完美实现需求，至少使用chrome的时候不至于精神分裂了。
 - MAC直接使用的开源软件karabiner,非常好用，这是个工具，已经满足我需求
 - Win 10 有些微软自己的一些应用，如服务、管理、PowerShell等，会直接跳过Autohotkey的脚本。解决办法：
-    D:\Program Files\AutoHotkey\AutoHotkey.exe
-    反键属性，在兼容性页面里将这个程序设置用“管理员权限”执行即可解决问题。
+    找到"D:\Program Files\AutoHotkey\AutoHotkey.exe", 反键属性，在兼容性页面里将这个程序设置用“管理员权限”执行即可解决问题。    
     UAC rules have changed with Windows 10. Some AutoHotkey scripts that worked fine in Windows 7 no longer work in Windows 10.
-    1. Find your AutoHotkey executable, typically here: C:\Program Files\AutoHotkey\AutoHotkey.exe
-    2. Right-click on AutoHotkey.exe
-    3. Select the Compatibility tab
-    4. Enable Run this program as Administrator
-    Note you have to do this even though you are running as an Administrator.  Hope this helps others.
+
+      1. Find your AutoHotkey executable, typically here: C:\Program Files\AutoHotkey\AutoHotkey.exe
+      2. Right-click on AutoHotkey.exe
+      3. Select the Compatibility tab
+      4. Enable Run this program as Administrator
+         Note you have to do this even though you are running as an Administrator.  Hope this helps others.
