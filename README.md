@@ -33,8 +33,7 @@
 - Win 10 有些微软自己的一些应用，如服务、管理、PowerShell等，会直接跳过Autohotkey的脚本。解决办法：
     D:\Program Files\AutoHotkey\AutoHotkey.exe
     反键属性，在兼容性页面里将这个程序设置用“管理员权限”执行即可解决问题。
-    UAC rules have changed with Windows 10.
-    AutoHotkey scripts that worked fine in Windows 7 no longer work in Windows 10.
+    UAC rules have changed with Windows 10. Some AutoHotkey scripts that worked fine in Windows 7 no longer work in Windows 10.
     1. Find your AutoHotkey executable, typically here: C:\Program Files\AutoHotkey\AutoHotkey.exe
     2. Right-click on AutoHotkey.exe
     3. Select the Compatibility tab
