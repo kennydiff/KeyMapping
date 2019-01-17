@@ -18,6 +18,10 @@
     - [x] 注册表实现"Alt = Win"的互换
     - [x] AHK的实现剩余功能    
     - [x] 添加Evernote支持(Win+S -> F9)
+    - [ ] 左边边ALt Ctrl交换注册表
+    - [ ] 右边边ALt Ctrl交换注册表
+    - [ ] 某些微软的应用里AHK直接整个失效 ... -,-
+    
     
 - Others
     - [ ] github repo里有些mac系统的垃圾文件
