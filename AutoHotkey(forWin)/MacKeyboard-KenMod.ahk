@@ -86,8 +86,26 @@ return
         Send {LCtrl Down}{s}{LCtrl Up}  ; #todo# 这里代码有点脏，，，需要整理一下。。。
 return
 
+; --------------------------------------------------------------
+; 将Chrome的ctrl + 左右，改为 alt+左右(后退，前进)
+; --------------------------------------------------------------
+^Left::
+    IfWinActive, ahk_class Chrome_WidgetWin_1
+        Send {RAlt Down}{Left}{RAlt Up}
+    else
+        Send {RCtrl Down}Left}{RCtrl Up} 
+return
+
+^Right::
+    IfWinActive, ahk_class Chrome_WidgetWin_1
+        Send {RAlt Down}{Right}{RAlt Up}
+    else
+        Send {RCtrl Down}Right}{RCtrl Up} 
+return
+; --------------------------------------------------------------
 ; Close windows (cmd + q to Alt + F4)
-<^q::Send !{F4}
+; --------------------------------------------------------------
+~<^q::Send !{F4}
 
 ; --------------------------------------------------------------
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
