@@ -1,6 +1,6 @@
 {
     "global": {
-        "check_for_updates_on_startup": true,
+        "check_for_updates_on_startup": false,
         "show_in_menu_bar": true,
         "show_profile_name_in_menu_bar": false
     },
@@ -11,11 +11,12 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500
+                    "basic.to_if_held_down_threshold_milliseconds": 500,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
-                        "description": "shift + caps_lock as caps_lock(must before the Hyper CapsLock rule!)",
+                        "description": "Change caps_lock key to command+control+option+shift. (Use shift+caps_lock as caps_lock)",
                         "manipulators": [
                             {
                                 "from": {
@@ -35,12 +36,7 @@
                                     }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change caps_lock key to command+control+option+shift. (Post escape key when pressed alone)",
-                        "manipulators": [
+                            },
                             {
                                 "from": {
                                     "key_code": "caps_lock",
@@ -52,11 +48,11 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
+                                        "key_code": "right_shift",
                                         "modifiers": [
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
+                                            "right_command",
+                                            "right_control",
+                                            "right_option"
                                         ]
                                     }
                                 ],
@@ -76,7 +72,7 @@
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": {
-                                        "mandatory": [                                            
+                                        "mandatory": [
                                             "left_command"
                                         ],
                                         "optional": [
@@ -84,23 +80,23 @@
                                         ]
                                     }
                                 },
-                                "to":[
+                                "to": [
                                     {
-                                      "key_code": "left_shift",
-                                      "modifiers": [
+                                        "key_code": "left_shift",
+                                        "modifiers": [
                                             "left_command",
                                             "left_shift"
-                                        ]                                      
+                                        ]
                                     }
-                                ],                                 
+                                ],
                                 "to_if_alone": [
                                     {
                                         "key_code": "f14",
                                         "modifiers": [
-                                            "shift",
-                                            "command",
-                                            "control",
-                                            "option"
+                                            "right_shift",
+                                            "right_command",
+                                            "right_control",
+                                            "right_option"
                                         ]
                                     }
                                 ],
@@ -111,7 +107,7 @@
                                     "key_code": "1",
                                     "modifiers": {
                                         "mandatory": [
-                                            "option"
+                                            "left_option"
                                         ],
                                         "optional": [
                                             "any"
@@ -132,7 +128,7 @@
                                     "key_code": "2",
                                     "modifiers": {
                                         "mandatory": [
-                                            "option"
+                                            "left_option"
                                         ],
                                         "optional": [
                                             "any"
@@ -189,6 +185,70 @@
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
+                        "product_id": 50495,
+                        "vendor_id": 1133
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 19,
+                        "vendor_id": 9610
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "left_command"
+                            },
+                            "to": {
+                                "key_code": "left_option"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": {
+                                "key_code": "left_command"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "right_command"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 19,
+                        "vendor_id": 9610
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
                         "product_id": 50495,
                         "vendor_id": 1133
                     },
