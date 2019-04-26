@@ -65,7 +65,7 @@ return
 ;;;;    Send, Capslock    
 ;;;; return
 
-; Make Win Key + Capslock work like Capslock (in case it's ever needed)
+; Make shift Key + Capslock work like Capslock (in case it's ever needed)
 <+Capslock::
 If GetKeyState("CapsLock", "T") = 1
     SetCapsLockState, AlwaysOff
