@@ -7,7 +7,7 @@
 - 总体
     - [x] Chrome、输入法、复制黏贴等常用双系统的操作热键保持一致。主要为Windows兼容Mac的操作习惯（使用过的都知道Mac的热键更人性化一些）
     - [x] CapsLock的定义为Ctrl简单了点,已改为Hyper键意义更大
-    - [x] "CapsLock & `"(tab上的那个点)的组合键,实现原本的CapsLock
+    - [x] "left_shift" + "CapsLock"的组合键,实现原本的CapsLock
     - [x] 输入法同步为Mac & Windows 统一热键，Cmd & Shift
     
 - MAC
