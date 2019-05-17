@@ -206,6 +206,14 @@
                     "simple_modifications": [
                         {
                             "from": {
+                                "key_code": "application"
+                            },
+                            "to": {
+                                "key_code": "right_option"
+                            }
+                        },
+                        {
+                            "from": {
                                 "key_code": "left_command"
                             },
                             "to": {
@@ -226,6 +234,14 @@
                             },
                             "to": {
                                 "key_code": "right_command"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "scroll_lock"
+                            },
+                            "to": {
+                                "key_code": "power"
                             }
                         }
                     ]
@@ -270,10 +286,10 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_control"
+                                "key_code": "application"
                             },
                             "to": {
-                                "key_code": "left_command"
+                                "key_code": "right_option"
                             }
                         },
                         {
@@ -282,6 +298,14 @@
                             },
                             "to": {
                                 "key_code": "left_option"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_control"
+                            },
+                            "to": {
+                                "key_code": "left_command"
                             }
                         },
                         {
@@ -298,14 +322,6 @@
                             },
                             "to": {
                                 "key_code": "right_command"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "application"
-                            },
-                            "to": {
-                                "key_code": "right_option"
                             }
                         },
                         {
@@ -421,7 +437,8 @@
             "selected": true,
             "simple_modifications": [],
             "virtual_hid_keyboard": {
-                "country_code": 0
+                "country_code": 0,
+                "mouse_key_xy_scale": 100
             }
         }
     ]
