@@ -13,6 +13,7 @@
 - MAC
     - [x] 本地键盘完美实现
     - [x] 外接蓝牙的达尔优(Dareu)87key键盘也完美实现
+    - [x] change mac's Scrl Lock to Power KEY
 
 - Windows
     - [x] 注册表实现"Alt = Win"的互换
