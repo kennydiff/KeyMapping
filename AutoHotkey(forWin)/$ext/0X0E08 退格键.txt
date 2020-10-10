@@ -1,0 +1,25 @@
+0X0E08 退格键
+
+VK_BACK Backspace键 0x08 
+0x2b5c \
+
+
+0x2b5c \
+0x0e08 退格键
+
+
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout] //注册位置(注册文件生成的位置)
+
+"Scancode Map"=hex:                //注册文件名 Scnacode Map                              
+00,00,00,00,                       //固定格式
+00,00,00,00,                       //固定格式
+03,00,00,00,                       //03表示后面还有3行
+3a,00,01,00,                       //将Esc(3a,00)键映射到Caps Lock(01,00)键上 
+01,00,3a,00,                       //将Caps Lock(01,00)键映射到Esc(3a,00)键上
+00,00,00,00,                       //固定格式
+
+
+
+

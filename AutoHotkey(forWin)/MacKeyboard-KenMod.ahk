@@ -37,7 +37,6 @@ SetCapslockState, AlwaysOff
 
 ;; note: must use tidle prefix to fire hotkey once it is pressed
 ;; not until the hotkey is released
-
 ~Capslock::
     ;; must use downtemp to emulate hyper key, you cannot use down in this case 
     ;; according to http://bit.ly/2fLyHHI, downtemp is as same as down except for ctrl/alt/shift/win keys
@@ -46,9 +45,9 @@ SetCapslockState, AlwaysOff
     ;; for example, Send {Ctrl Downtemp} followed later by Send {Left} would produce a normal {Left}
     ;; keystroke, not a Ctrl{Left} keystroke
     ; {LWin DownTemp}  ;Stupid Widnows 不支持Win作为修饰符来定义日常热键
-    
     Send {LCtrl DownTemp}{LShift DownTemp}{LAlt DownTemp}
     KeyWait, Capslock
+    ; {LWin Up}
     Send {LCtrl Up}{LShift Up}{LAlt Up}
     if (A_PriorKey = "Capslock") {
         Send {Esc}
@@ -60,19 +59,7 @@ return
 ; 否则会导致CapsLock灯混乱
 ; --------------------------------------------------------------
 ; +CapsLock::CapsLock
-;  +Capslock :: Send {Capslock}
-;;;; If GetKeyState("Shift")
-;;;;    Send, Capslock    
-;;;; return
-
-; Make shift Key + Capslock work like Capslock (in case it's ever needed)
-<+Capslock::
-If GetKeyState("CapsLock", "T") = 1
-    SetCapsLockState, AlwaysOff
-Else 
-    SetCapsLockState, AlwaysOn
-Return
-
+~Capslock & `:: Capslock
 ; --------------------------------------------------------------
 
 ;; vim navigation with hyper 不用vim，所以这些热键暂时屏蔽
@@ -106,19 +93,24 @@ return
     IfWinActive, ahk_class Chrome_WidgetWin_1
         Send {RAlt Down}{Left}{RAlt Up}
     else
-        Send {RCtrl Down}{Left}{RCtrl Up} 
+        Send {RCtrl Down}Left}{RCtrl Up} 
 return
 
 ^Right::
     IfWinActive, ahk_class Chrome_WidgetWin_1
         Send {RAlt Down}{Right}{RAlt Up}
     else
-        Send {RCtrl Down}{Right}{RCtrl Up} 
+        Send {RCtrl Down}Right}{RCtrl Up} 
 return
 ; --------------------------------------------------------------
 ; Close windows (cmd + q to Alt + F4)
 ; --------------------------------------------------------------
 <^q::Send !{F4}
+
+; --------------------------------------------------------------
+; ctrl + backspace change to del
+; --------------------------------------------------------------
+^backspace::Send {del}
 
 ; --------------------------------------------------------------
 ; 将win10的虚拟桌面(win&tab)改为mac的ctrl + win  + up/down
