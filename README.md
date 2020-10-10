@@ -21,6 +21,7 @@
     - [x] 添加Evernote支持(Win+S -> F9)
     - [x] 两边ALt Ctrl交换注册表    
     - [x] 某些微软的应用里AHK直接整个失效 ... fixed
+    - [x] 实现类似Mac的cmd+backspace删除的操作
     
     
 - Others
