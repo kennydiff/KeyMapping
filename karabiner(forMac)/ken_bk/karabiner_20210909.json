@@ -16,23 +16,25 @@
                 },
                 "rules": [
                     {
-                        "description": "Simulation Eject",
+                        "description": "Post escape if left_control is pressed alone/Simulation Eject",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "delete_forward",
+                                    "key_code": "left_control",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "eject",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -53,6 +55,28 @@
                                         "modifiers": [
                                             "left_control",
                                             "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control",
+                                            "left_shift",
+                                            "left_option",
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "eject",
+                                        "modifiers": [
+                                            "left_control"
                                         ]
                                     }
                                 ],
@@ -82,14 +106,14 @@
                         ]
                     },
                     {
-                        "description": "Change Caps_Lock key to command+control+option+shift,if_alone_ESC. (Shift+Caps_Lock as Caps_Lock)",
+                        "description": "Change caps_lock key to command+control+option+shift. (Use cmd+caps_lock as caps_lock)",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
                                         "mandatory": [
-                                            "shift"
+                                            "command"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -139,10 +163,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "joplin",
-                                            "finder",
-                                            "qq",
-                                            "WeChat",
-                                            "dash"
+                                            "finder"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -236,11 +257,7 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "q"
-                                    }
-                                ],
+                                "to": [{"key_code": "q"}],
                                 "type": "basic"
                             },
                             {
@@ -260,11 +277,7 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "w"
-                                    }
-                                ],
+                                "to": [{"key_code": "w"}],
                                 "type": "basic"
                             },
                             {
@@ -284,11 +297,7 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "e"
-                                    }
-                                ],
+                                "to": [{"key_code": "e"}],
                                 "type": "basic"
                             },
                             {
@@ -296,10 +305,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "joplin",
-                                            "notion",                                            
-                                            "qq",
-                                            "WeChat",
-                                            "dash",
+                                            "notion",
                                             "dota2"
                                         ],
                                         "type": "frontmost_application_if"
@@ -341,7 +347,7 @@
                         "vendor_id": 1155
                     },
                     "ignore": false,
-                    "manipulate_caps_lock_led": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": [
                         {
                             "from": {
@@ -364,120 +370,7 @@
                         "product_id": 50495,
                         "vendor_id": 1133
                     },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 19,
-                        "vendor_id": 9610
-                    },
                     "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "application"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "right_option"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_option"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "right_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "backslash"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "delete_or_backspace"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "delete_or_backspace"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "backslash"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 19,
-                        "vendor_id": 9610
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 20783,
-                        "vendor_id": 1155
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 50495,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
                     "manipulate_caps_lock_led": false,
                     "simple_modifications": []
                 }

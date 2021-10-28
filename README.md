@@ -9,20 +9,19 @@
     - [x] CapsLock的定义为Ctrl简单了点,已改为Hyper键意义更大
     - [x] "left_shift" + "CapsLock"的组合键,实现原本的CapsLock
     - [x] 输入法同步为Mac & Windows 统一热键，Cmd & Shift
-    
 - MAC
     - [x] 本地键盘完美实现
     - [x] 外接蓝牙的达尔优(Dareu)87key键盘也完美实现
     - [x] change mac's Scrl Lock to Power KEY
-
+    - [x] 键盘已更新为niz的静电容键盘，CapsLock定义为HyperKey。
 - Windows
+    - [ ] Windows 已经放弃更新，几乎不用Windows了
     - [x] 注册表实现"Alt = Win"的互换
     - [x] AHK的实现剩余功能    
     - [x] 添加Evernote支持(Win+S -> F9)
     - [x] 两边ALt Ctrl交换注册表    
     - [x] 某些微软的应用里AHK直接整个失效 ... fixed
     - [x] 实现类似Mac的cmd+backspace删除的操作
-    
     
 - Others
     - [ ] github repo里有些mac系统的垃圾文件
