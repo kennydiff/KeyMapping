@@ -14,6 +14,8 @@
     - [x] 外接蓝牙的达尔优(Dareu)87key键盘也完美实现
     - [x] change mac's Scrl Lock to Power KEY
     - [x] 键盘已更新为niz的静电容键盘，CapsLock定义为HyperKey。
+    - [x] 新增Dota2的兼容支持，防止误触
+    - [x] WeChat，QQ，Dash等CMD+Q的操作定义为最小化而不是关掉进程，杀进程用Hyper+Q
 - Windows
     - [ ] Windows 已经放弃更新，几乎不用Windows了
     - [x] 注册表实现"Alt = Win"的互换
