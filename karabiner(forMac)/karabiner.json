@@ -16,65 +16,25 @@
                 },
                 "rules": [
                     {
-                        "description": "Simulation Eject",
+                        "description": "Post escape if left_control is pressed alone",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "delete_forward",
+                                    "key_code": "left_control",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "eject",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
+                                        "key_code": "left_control"
                                     }
                                 ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "delete_forward",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
+                                "to_if_alone": [
                                     {
-                                        "key_code": "eject",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "delete_forward",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option",
-                                            "left_command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "eject",
-                                        "modifiers": [
-                                            "left_option",
-                                            "left_command"
-                                        ]
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -82,7 +42,7 @@
                         ]
                     },
                     {
-                        "description": "Change Caps_Lock key to command+control+option+shift,if_alone_ESC. (Shift+Caps_Lock as Caps_Lock)",
+                        "description": "Caps_Lock → Hyper_Key (⌃⌥⇧⌘) (Shift + Caps_Lock as Caps_Lock)",
                         "manipulators": [
                             {
                                 "from": {
@@ -122,17 +82,12 @@
                                         ]
                                     }
                                 ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Change cmd+Q to cmd+W in Some App",
+                        "description": "Change CMD+Q to CMD+W in Some App, Force Quit by CMD+Shift+W",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -296,7 +251,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "joplin",
-                                            "notion",                                            
+                                            "notion",
                                             "qq",
                                             "WeChat",
                                             "dash",
@@ -306,13 +261,11 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "q",
+                                    "key_code": "w",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "left_control",
-                                            "left_shift",
-                                            "left_option"
+                                            "left_command",                                            
+                                            "left_shift"
                                         ]
                                     }
                                 },
@@ -320,6 +273,72 @@
                                     {
                                         "key_code": "q",
                                         "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Simulation Eject",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "eject",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "eject",
+                                        "modifiers": [
+                                            "left_control",
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option",
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "eject",
+                                        "modifiers": [
+                                            "left_option",
                                             "left_command"
                                         ]
                                     }
@@ -392,11 +411,51 @@
                         },
                         {
                             "from": {
+                                "key_code": "backslash"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "delete_or_backspace"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "caps_lock"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "left_control"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "delete_or_backspace"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "backslash"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
                                 "key_code": "left_command"
                             },
                             "to": [
                                 {
                                     "key_code": "left_option"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_control"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "caps_lock"
                                 }
                             ]
                         },
@@ -417,26 +476,6 @@
                             "to": [
                                 {
                                     "key_code": "right_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "backslash"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "delete_or_backspace"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "delete_or_backspace"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "backslash"
                                 }
                             ]
                         }
