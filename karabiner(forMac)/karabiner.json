@@ -96,8 +96,7 @@
                                             "joplin",
                                             "finder",
                                             "qq",
-                                            "WeChat",
-                                            "dash"
+                                            "WeChat"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -254,7 +253,6 @@
                                             "notion",
                                             "qq",
                                             "WeChat",
-                                            "dash",
                                             "dota2"
                                         ],
                                         "type": "frontmost_application_if"
