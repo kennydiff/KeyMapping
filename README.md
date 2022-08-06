@@ -18,7 +18,7 @@
     - [x] 新增Dota2的兼容支持，防止误触
     - [x] WeChat，QQ，Dash等CMD+Q的操作定义为最小化而不是关掉进程，杀进程用Shift+CMD+Q
 - Windows
-    - [ ] Windows 已经放弃更新，几乎不用Windows了
+    - [x] 更换 Backspace & \
     - [x] 注册表实现"Alt = Win"的互换
     - [x] AHK的实现剩余功能    
     - [x] 添加Evernote支持(Win+S -> F9)
