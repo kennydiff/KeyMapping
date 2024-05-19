@@ -23,6 +23,7 @@
     - [x] 某些微软的应用里AHK直接整个失效 ... fixed
     - [x] 实现类似Mac的`⌘+Backspace`删除的操作
     - [x] `Left_Shift` + (上面的)`CapsLock`(已改为Ctrl的定义)的组合键,实现原本的CapsLock切换
+    - [ ] `⌘+↓`映射为`Windows`的`Enter`
     - [x] AutoHotkey迁移到了支持V2版本的代码
     - [x] ~~添加Evernote支持(Win+S -> F9)  # K_24518 // 已放弃Evernote~~
 - 其他
