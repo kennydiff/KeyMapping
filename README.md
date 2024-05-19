@@ -4,7 +4,7 @@ English | [中文](./README_ZH.md)
 
 ## GOAL
 
- To ensure that both `macOS` and `Windows` systems use a similar set of shortcut keys, so as not to frequently switch between the two systems and cause oneself to become **mentally *****confused***~~~
+ To ensure that both `macOS` and `Windows` systems use a similar set of shortcut keys, so as not to frequently switch between the two systems and cause oneself to become **mentally confused** ~~~
 
 
 ### CHANGE LOG
