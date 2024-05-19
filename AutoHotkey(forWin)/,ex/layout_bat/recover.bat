@@ -1,4 +1,4 @@
 @echo off
 reg delete "hklm\system\currentcontrolset\control\keyboard layout" /v "ScanCode Map" /f
-echo "¼üÎ»ÒÑ»Ö¸´£¬ÖØÆôÏµÍ³ºóÉúĞ§"
+echo "é”®ä½å·²æ¢å¤ï¼Œé‡å¯ç³»ç»Ÿåç”Ÿæ•ˆ"
 pause

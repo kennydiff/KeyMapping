@@ -15,3 +15,9 @@ Windows Registry Editor Version 5.00
 38,e0,1d,e0,        
 1d,e0,38,e0,\       // 倒数第二行要有一个"\"字符作为结尾，并换行(CRLF)
 00,00,00,00         // 最后一行必须是4个0，除了最后一行的4个0将之前的全部合并成一行，放到 "ScanCode Map"=hex: 的后面。
+
+
+
+恢复这些reg的修改，执行以下批处理
+```layout_bat/recover.bat```
+
