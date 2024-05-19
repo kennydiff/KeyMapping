@@ -24,10 +24,10 @@ English | [中文](./README_ZH.md)
     - [x] In some Microsoft applications, AHK is completely disabled... Fixed.
     - [x] Implement the operation similar to Mac's `⌘+Backspace` for deletion.
     - [x] The combination of `Left_Shift` + (`CapsLock` which has been redefined as `Ctrl`) achieves the original function of `CapsLock` toggling.
+    - [x] `⌘+↓`mapped to Windows's `Enter`
     - [x] AutoHotkey has migrated to code supporting version V2.
     - [x] ~~Add Evernote support (Win+S -> F9) # K_24518 // Evernote Support has been discontinued~~
-- 其他
-    - [ ] There are some junk files of the Mac system in the GitHub repository.
+
 
 ### Other Information
 

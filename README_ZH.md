@@ -23,11 +23,10 @@
     - [x] 某些微软的应用里AHK直接整个失效 ... fixed
     - [x] 实现类似Mac的`⌘+Backspace`删除的操作
     - [x] `Left_Shift` + (上面的)`CapsLock`(已改为Ctrl的定义)的组合键,实现原本的CapsLock切换
-    - [ ] `⌘+↓`映射为`Windows`的`Enter`
+    - [x] `⌘+↓`映射为`Windows`的`Enter`
     - [x] AutoHotkey迁移到了支持V2版本的代码
     - [x] ~~添加Evernote支持(Win+S -> F9)  # K_24518 // 已放弃Evernote~~
-- 其他
-    - [ ] github repo里有些mac系统的垃圾文件
+
 
 ### 其他说明
 
@@ -40,10 +39,9 @@
     exit
     ```
 
+
 - AHK(forWin) 全称 AutoHotKey ，有用，但无法完整的Hack，还需要用到注册表进行系统级改，不过也算可以完美实现需求，至少使用chrome的时候不至于精神分裂了，目前已支持V2
-
 - macOS直接使用的开源软件karabiner,非常好用，这是个工具，已经满足我需求
-
 - Win 10 有些微软自己的一些应用，如服务、管理、PowerShell等，会直接跳过Autohotkey的脚本。解决办法：
   找到"C:\Program Files\AutoHotkey\AutoHotkey.exe", 反键属性，在兼容性页面里将这个程序设置用“管理员权限”执行即可解决问题。
   UAC规则在Windows 10中已经改变。一些在Windows 7中运行良好的AutoHotkey脚本在Windows 10中不再工作。
