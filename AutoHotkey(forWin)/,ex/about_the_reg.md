@@ -19,5 +19,7 @@ Windows Registry Editor Version 5.00
 
 
 恢复这些reg的修改，执行以下批处理
-```layout_bat/recover.bat```
+```
+layout_bat/recover.bat
+```
 
